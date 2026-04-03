@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: "Poppins", sans-serif;
+}
+
+/* Global font setup */
+:root {
+  font-family: var(--font-poppins);
+}
+
+/* for all elements */
+* {
+  font-family: inherit; 
+  font-style: normal;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
