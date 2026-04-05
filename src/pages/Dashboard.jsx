@@ -6,6 +6,10 @@ import SpendingCategories from "../components/dashboard/SpendingCategories";
 import RecentTransactions from "../components/dashboard/RecentTransactions";
 import InsightsCard from "../components/dashboard/InsightsCard";
 import FinanceGrid from "../components/dashboard/FinanceGrid";
+import QuickActions from "../components/dashboard/QuickActions";
+import MiniSavingsGoal from "../components/dashboard/MiniSavingsGoal";
+import BudgetTracker from "../components/dashboard/BudgetTracker";
+import FinancialHealth from "../components/dashboard/FinancialHealth";
 
 const Dashboard = () => {
   const { transactions } = useApp();
@@ -27,36 +31,37 @@ const Dashboard = () => {
     };
   }, [transactions]);
   return (
-    <div className="space-y-8 max-w-[1600px] mx-auto">
-        
-      {/* Dashboard header */}
+    <div className="space-y-6 md:space-y-8 max-w-7xl mx-auto p-4 md:p-0">
+     
       <DashboardHeader />
+      <QuickActions />
 
-      {/* Finance grid cards for showing balance, income & expenses */}
+     
       <FinanceGrid
         balance={stats.balance}
         income={stats.income}
         expenses={stats.expenses}
       />
 
-      <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        <div className="xl:col-span-2">
-          <BalanceTrendChart />
-        </div>
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+  
+  <div className="lg:col-span-2 space-y-6">
+    <BalanceTrendChart />
+    <RecentTransactions />
 
-        <div>
-          <SpendingCategories />
-        </div>
-      </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <BudgetTracker />
+      <FinancialHealth />
+    </div>
+  </div>
 
-      <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        <div className="xl:col-span-2">
-          <RecentTransactions />
-        </div>
-        <div>
-          <InsightsCard />
-        </div>
-      </section>
+  <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-8 h-fit">
+    <SpendingCategories />
+    <MiniSavingsGoal />
+    <InsightsCard />
+  </div>
+
+</div>
     </div>
   );
 };
