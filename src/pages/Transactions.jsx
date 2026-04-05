@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import TransactionTable from '../components/transaction/TransactionTable';
 import { useApp } from '../context/AppContext';
+import { Search } from 'lucide-react';
 
 
 const TransactionsPage = () => {
@@ -21,13 +22,13 @@ const TransactionsPage = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight">Transactions</h2>
-          <p className="text-slate-400 font-bold text-sm">Keep track of your FinFlow activities</p>
+          <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Transactions</h2>
+          <p className="text-slate-600 font-semibold text-sm mt-1">Keep track of your FinFlow activities</p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={18} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-indigo-500 transition-colors" size={18} />
             <input 
               type="text" 
               placeholder="Search transactions..."
@@ -48,7 +49,7 @@ const TransactionsPage = () => {
             className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
               filter === tab 
                 ? 'bg-white text-indigo-600 shadow-sm' 
-                : 'text-slate-400 hover:text-slate-600'
+                : 'text-slate-600 hover:text-slate-600'
             }`}
           >
             {tab}
