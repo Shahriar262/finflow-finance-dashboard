@@ -5,6 +5,8 @@ import { useApp } from "../../context/AppContext";
 
 const TransactionTable = ({ transactions, onDelete }) => {
   const { role } = useApp();
+  
+  const isAdmin = role === "admin";
 
   return (
     <div className="bg-white dark:bg-slate-900 lg:rounded-[32px] rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm overflow-hidden transition-colors duration-300">
@@ -25,7 +27,8 @@ const TransactionTable = ({ transactions, onDelete }) => {
               <th className="px-6 py-5 text-[12px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest text-right">
                 Amount
               </th>
-              {role === "admin" && (
+              {/* Header section isAdmin check */}
+              {isAdmin && (
                 <th className="px-6 py-5 text-[12px] font-black text-slate-700 dark:text-slate-400 uppercase tracking-widest text-right">
                   Action
                 </th>
@@ -35,7 +38,7 @@ const TransactionTable = ({ transactions, onDelete }) => {
           <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
             {transactions.map((t, index) => (
               <motion.tr
-                key={t.id}
+                key={t.id || index}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
@@ -70,7 +73,8 @@ const TransactionTable = ({ transactions, onDelete }) => {
                 >
                   {t.type === "income" ? "+" : "-"}${t.amount.toLocaleString()}
                 </td>
-                {role === "admin" && (
+               
+                {isAdmin && (
                   <td className="px-6 py-5 text-right">
                     <button
                       onClick={() => onDelete(t.id)}
@@ -90,7 +94,7 @@ const TransactionTable = ({ transactions, onDelete }) => {
       <div className="md:hidden divide-y divide-slate-100 dark:divide-slate-800">
         {transactions.map((t, index) => (
           <motion.div
-            key={t.id}
+            key={t.id || index}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
@@ -126,10 +130,11 @@ const TransactionTable = ({ transactions, onDelete }) => {
               >
                 {t.type === "income" ? "+" : "-"}${t.amount.toLocaleString()}
               </div>
-              {role === "admin" && (
+              
+              {isAdmin && (
                 <button
                   onClick={() => onDelete(t.id)}
-                  className="p-2 text-slate-500 active:text-rose-500"
+                  className="p-2 text-slate-500 active:text-rose-500 cursor-pointer"
                 >
                   <Trash2 size={18} />
                 </button>
