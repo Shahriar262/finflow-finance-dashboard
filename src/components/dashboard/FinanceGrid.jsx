@@ -40,17 +40,17 @@ const FinanceGrid = ({ balance, income, expenses }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ y: -5 }}
-          className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-5 transition-shadow hover:shadow-md"
+          className="bg-white p-5 md:p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-row items-center gap-4 md:gap-5 transition-shadow"
         >
         
-          <div className={`p-4 rounded-xl ${item.bg} ${item.text}`}>
+          <div className={`p-4 rounded-xl ${item.bg} ${item.text} shrink-0`}>
             {item.icon}
           </div>
 
           
-          <div>
-            <p className="text-sm font-medium text-slate-500">{item.label}</p>
-            <h3 className="text-2xl font-bold text-slate-900">
+          <div className='min-w-0'>
+            <p className="text-xs md:text-sm font-medium text-slate-500 truncate">{item.label}</p>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 truncate">
               ${item.value.toLocaleString()}
             </h3>
           </div>

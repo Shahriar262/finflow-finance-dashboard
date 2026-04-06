@@ -14,7 +14,7 @@ const QuickActions = () => {
     <motion.div 
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex gap-3 items-center overflow-x-auto pb-2 scrollbar-hide no-scrollbar"
+      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 overflow-x-auto no-scrollbar"
     >
       {actions.map((action, i) => (
         <motion.button

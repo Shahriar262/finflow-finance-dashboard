@@ -10,6 +10,7 @@ import QuickActions from "../components/dashboard/QuickActions";
 import MiniSavingsGoal from "../components/dashboard/MiniSavingsGoal";
 import BudgetTracker from "../components/dashboard/BudgetTracker";
 import FinancialHealth from "../components/dashboard/FinancialHealth";
+// import PageHeader from "../components/layout/PageHeader";
 
 const Dashboard = () => {
   const { transactions } = useApp();
@@ -31,9 +32,10 @@ const Dashboard = () => {
     };
   }, [transactions]);
   return (
-    <div className="space-y-6 md:space-y-8 max-w-7xl mx-auto p-4 md:p-0">
+    <div className="space-y-6 md:space-y-8 max-w-7xl mx-auto p-4 md:p-6 lg:p-0 pb-10">
      
       <DashboardHeader />
+      
       <QuickActions />
 
      

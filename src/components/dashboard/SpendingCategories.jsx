@@ -22,11 +22,11 @@ const SpendingCategories = () => {
   }, [transactions]);
 
   return (
-    <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm h-[400px] flex flex-col">
+    <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm h-[400px]  flex flex-col">
       <h3 className="text-lg font-bold text-slate-800 mb-4">Spending by Category</h3>
       
       <div className="flex-1">
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="90%">
           <PieChart>
             <Pie
               data={data}
