@@ -80,6 +80,7 @@ src/
 │   └── Transactions.jsx # Transaction management and list
 ├── App.js          # Core application logic and routing
 └── index.js        # Entry point for the React application
+```
 
 ## 🛡️ Best Practices Implemented
 
