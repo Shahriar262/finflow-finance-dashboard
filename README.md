@@ -7,10 +7,15 @@ FinFlow is a high-performance, responsive financial management dashboard built w
 ## ✨ Key Features
 
 - **📊 Comprehensive CRUD:** Effortlessly add, view, and delete transactions with real-time updates.
+
 - **🔐 Role-Based Access (RBAC):** Switch between **Admin** and **Viewer** modes to simulate real-world permission handling.
+
 - **🌗 Smart Dark Mode:** Fully optimized dark and light themes with smooth transitions using CSS variables and Tailwind.
+
 - **📱 Pixel Perfect Responsiveness:** Tailored experience for Mobile, Tablet, and Desktop with adaptive layouts.
+
 - **🔍 Advanced Filtering:** Search through transactions by description or category and filter by income/expense type.
+
 - **✨ Micro-interactions:** Engaging animations like the pulsing profile indicator and smooth modal transitions.
 
 ## 🛠️ Tech Stack
@@ -20,7 +25,7 @@ FinFlow is a high-performance, responsive financial management dashboard built w
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
 - **State Management:** React Context API
-- **Routing:** React Router v6
+- **Routing:** React Router v7.14.0
 
 ## 🚀 Getting Started
 
@@ -34,39 +39,47 @@ Follow these steps to run the project locally:
 
 2. **Navigate to the project directory:**
 
-```bash
-cd finflow-dashboard
-```
+    ```bash
+    cd finflow-dashboard
+    ```
 
-Install dependencies:
 
 3. **Install dependencies:**
 
-```bash
-npm install
-Start the development server:
-```
+    ```bash
+    npm install
+    Start the development server:
+    ```
 
 4. **Start the development server:**
 
-```bash
-npm run dev
-```
+    ```bash
+    npm run dev
+    ```
 
 5. **Build for production:**
 
-```bash
-npm run build
-```
+    ```bash
+    npm run build
+    ```
 
 ## 📂 Project Structure
 
-- src/
-  ├── components/ # Reusable UI components (Sidebar, Navbar, Table)
-  ├── context/ # Global State Management (AppContext)
-  ├── pages/ # Page-level components (Transactions, Overview)
-  ├── assets/ # Static assets and images
-  └── App.js # Main application entry and routing
+A modular and scalable directory structure designed for clarity and ease of maintenance.
+
+```bash
+src/
+├── assets/         # Static assets, images, and global styles
+├── components/     # Reusable UI components
+│   ├── layout/     # Sidebar, Navbar, and layout wrappers
+│   └── dashboard/    # Overview components (Header, Cards, Charts)
+├── context/        # Global State Management (AppContext)
+│   └── AppContext.js
+├── pages/          # Main page components
+│   ├── Dashboard.jsx    # Dashboard summary and analytics
+│   └── Transactions.jsx # Transaction management and list
+├── App.js          # Core application logic and routing
+└── index.js        # Entry point for the React application
 
 ## 🛡️ Best Practices Implemented
 
