@@ -2,7 +2,7 @@
 
 FinFlow is a high-performance, responsive financial management dashboard built with **React**, **Tailwind CSS**, and **Framer Motion**. It provides a seamless experience for tracking daily transactions, managing budget roles, and monitoring financial health with a "Dribbble-style" premium UI.
 
-![FinFlow Dashboard Preview](https://via.placeholder.com/800x450?text=FinFlow+Dashboard+Preview)
+![FinFlow Dashboard Preview](https://finflow-finance-dashboard-eight.vercel.app/)
 
 ## ✨ Key Features
 
