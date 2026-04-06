@@ -23,20 +23,20 @@ const Sidebar = ({ setSidebarOpen }) => {
   ];
 
   return (
-    <aside className="flex flex-col h-full bg-white transition-colors">
+    <aside className="flex flex-col h-full bg-white dark:bg-slate-900 transition-colors border-r border-gray-100 dark:border-slate-800">
       {/* Section 1: Logo & Close Button */}
-      <header className="p-6 border-b border-gray-100 flex justify-between items-center">
+      <header className="p-6 border-b border-gray-100 dark:border-slate-800 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100">
+          <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100 dark:shadow-none">
             <Wallet size={20} strokeWidth={2.5} />
           </div>
-          <h2 className="text-xl font-bold text-slate-900">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
             Fin<span className="text-indigo-600">Flow</span>
           </h2>
         </div>
 
         <button
-          className="lg:hidden p-1 text-slate-500 hover:bg-slate-50 rounded-lg transition-colors"
+          className="lg:hidden p-1 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
           onClick={() => setSidebarOpen(false)}
         >
           <X size={24} />
@@ -53,8 +53,8 @@ const Sidebar = ({ setSidebarOpen }) => {
             className={({ isActive }) =>
               `flex items-center gap-3 py-3 px-4 rounded-xl cursor-pointer transition-all duration-300 font-semibold text-sm ${
                 isActive
-                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200"
-                  : "text-slate-500 hover:bg-slate-50 hover:text-indigo-600"
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none"
+                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400"
               }`
             }
             onClick={() => setSidebarOpen(false)}
@@ -66,9 +66,9 @@ const Sidebar = ({ setSidebarOpen }) => {
       </nav>
 
       {/* Footer / Logout */}
-      <footer className="p-4 border-t border-gray-100 space-y-1">
-        <div className="flex items-center gap-3 px-4 py-3 text-rose-500 hover:bg-rose-50 rounded-xl cursor-pointer transition-all font-semibold text-sm group">
-          <div className="p-1.5 rounded-lg group-hover:bg-rose-100 transition-colors">
+      <footer className="p-4 border-t border-gray-100 dark:border-slate-800 space-y-1">
+        <div className="flex items-center gap-3 px-4 py-3 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl cursor-pointer transition-all font-semibold text-sm group">
+          <div className="p-1.5 rounded-lg group-hover:bg-rose-100 dark:group-hover:bg-rose-900/30 transition-colors">
             <LogOut size={18} />
           </div>
           <span>Logout</span>
@@ -79,4 +79,3 @@ const Sidebar = ({ setSidebarOpen }) => {
 };
 
 export default Sidebar;
-

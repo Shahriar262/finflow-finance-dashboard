@@ -10,7 +10,6 @@ import QuickActions from "../components/dashboard/QuickActions";
 import MiniSavingsGoal from "../components/dashboard/MiniSavingsGoal";
 import BudgetTracker from "../components/dashboard/BudgetTracker";
 import FinancialHealth from "../components/dashboard/FinancialHealth";
-// import PageHeader from "../components/layout/PageHeader";
 
 const Dashboard = () => {
   const { transactions } = useApp();
@@ -31,39 +30,40 @@ const Dashboard = () => {
       balance: income - expenses,
     };
   }, [transactions]);
+
   return (
-    <div className="space-y-6 md:space-y-8 max-w-7xl mx-auto p-4 md:p-6 lg:p-0 pb-10">
-     
+    // 'text-slate-900 dark:text-white' এবং 'transition-colors' যোগ করা হয়েছে
+    <div className="space-y-6 md:space-y-8 max-w-7xl mx-auto p-4 md:p-6 lg:p-0 pb-10 text-slate-900 dark:text-white transition-colors duration-300">
+      
       <DashboardHeader />
       
       <QuickActions />
 
-     
       <FinanceGrid
         balance={stats.balance}
         income={stats.income}
         expenses={stats.expenses}
       />
 
-<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-  
-  <div className="lg:col-span-2 space-y-6">
-    <BalanceTrendChart />
-    <RecentTransactions />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        
+        <div className="lg:col-span-2 space-y-6">
+          <BalanceTrendChart />
+          <RecentTransactions />
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <BudgetTracker />
-      <FinancialHealth />
-    </div>
-  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <BudgetTracker />
+            <FinancialHealth />
+          </div>
+        </div>
 
-  <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-8 h-fit">
-    <SpendingCategories />
-    <MiniSavingsGoal />
-    <InsightsCard />
-  </div>
+        <div className="lg:col-span-1 space-y-6 lg:sticky lg:top-8 h-fit">
+          <SpendingCategories />
+          <MiniSavingsGoal />
+          <InsightsCard />
+        </div>
 
-</div>
+      </div>
     </div>
   );
 };

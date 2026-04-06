@@ -2,9 +2,8 @@ import React, { useMemo } from "react";
 import { useApp } from "../../context/AppContext";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-
 const BalanceTrendChart = () => {
-  const { transactions } = useApp();
+  const { transactions, theme } = useApp(); // theme ব্যবহার করা হয়েছে চার্টের কালার কন্ট্রোল করতে
 
   const chartData = useMemo(() => {
     const sortedData = [...transactions].sort(
@@ -38,24 +37,41 @@ const BalanceTrendChart = () => {
 
   if (chartData.length === 0) {
     return (
-      <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm h-[400px] flex items-center justify-center">
-        <p className="text-slate-400 font-medium">No transaction data available</p>
+      <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-sm h-[400px] flex items-center justify-center transition-colors duration-300">
+        <p className="text-slate-400 dark:text-slate-500 font-medium">No transaction data available</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm h-[400px] w-full">
-      <h3 className="text-lg font-bold text-slate-800 mb-6">Balance Trend</h3>
+    <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-gray-100 dark:border-slate-800 shadow-sm h-[400px] w-full transition-colors duration-300">
+      <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-6">Balance Trend</h3>
       
       <ResponsiveContainer width="100%" height="80%">
         <AreaChart data={chartData}> 
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-          <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 12}} />
-          <YAxis hide={true} />
-          <Tooltip 
-            contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+          {/* Grid line color adjusted for dark mode */}
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={theme === 'dark' ? '#1e293b' : '#f1f5f9'} />
+          
+          <XAxis 
+            dataKey="name" 
+            axisLine={false} 
+            tickLine={false} 
+            tick={{fill: theme === 'dark' ? '#64748b' : '#94a3b8', fontSize: 12}} 
           />
+          
+          <YAxis hide={true} />
+          
+          <Tooltip 
+            contentStyle={{ 
+              backgroundColor: theme === 'dark' ? '#0f172a' : '#ffffff', 
+              borderRadius: '12px', 
+              border: theme === 'dark' ? '1px solid #1e293b' : 'none', 
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              color: theme === 'dark' ? '#f8fafc' : '#1e293b'
+            }}
+            itemStyle={{ color: theme === 'dark' ? '#818cf8' : '#4f46e5' }}
+          />
+          
           <Area 
             type="monotone" 
             dataKey="balance" 
@@ -64,9 +80,10 @@ const BalanceTrendChart = () => {
             fill="url(#colorView)" 
             strokeWidth={3}
           />
+          
           <defs>
             <linearGradient id="colorView" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.2}/>
+              <stop offset="5%" stopColor="#4f46e5" stopOpacity={theme === 'dark' ? 0.4 : 0.2}/>
               <stop offset="95%" stopColor="#4f46e5" stopOpacity={0}/>
             </linearGradient>
           </defs>
