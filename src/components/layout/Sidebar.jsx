@@ -65,7 +65,7 @@ const Sidebar = ({ setSidebarOpen }) => {
         ))}
       </nav>
 
-      {/* Footer / Logout */}
+      {/* Section 3: Footer section */}
       <footer className="p-4 border-t border-gray-100 dark:border-slate-800 space-y-1">
         <div className="flex items-center gap-3 px-4 py-3 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl cursor-pointer transition-all font-semibold text-sm group">
           <div className="p-1.5 rounded-lg group-hover:bg-rose-100 dark:group-hover:bg-rose-900/30 transition-colors">

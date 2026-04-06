@@ -33,10 +33,10 @@ const InsightsCard = () => {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
-      // Light mode: Clean White/Indigo border | Dark mode: Your custom gradient
+      
       className="bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-900 dark:to-indigo-950 p-8 rounded-[32px] border border-slate-100 dark:border-slate-700 shadow-xl dark:shadow-2xl h-full relative overflow-hidden group transition-all duration-300"
     >
-      {/* Decorative Blur Orbs - Visible only in Dark mode for premium feel */}
+     
       <div className="absolute -right-16 -top-16 w-56 h-56 bg-indigo-500 opacity-0 dark:opacity-10 rounded-full blur-[80px] group-hover:opacity-20 transition-opacity"></div>
       <div className="absolute -left-16 -bottom-16 w-40 h-40 bg-purple-500 opacity-0 dark:opacity-5 rounded-full blur-[60px]"></div>
 
@@ -60,7 +60,7 @@ const InsightsCard = () => {
         </div>
 
         <div className="space-y-5 flex-grow">
-          {/* Card Item - Spending Tip */}
+          {/* Card Item - Spending tip */}
           <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 backdrop-blur-sm hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
             <div className="flex items-center gap-3 mb-3">
               <TrendingDown size={16} className="text-indigo-600 dark:text-indigo-300" />

@@ -1,111 +1,114 @@
 import React, { useState } from "react";
-import { Bell, ShieldCheck, ChevronDown, Moon, Sun, User } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Bell, ShieldCheck, ChevronDown, Moon, Sun, User, CheckCircle2 } from "lucide-react";
 import { useApp } from "../../context/AppContext";
 
 const Navbar = ({ sidebarOpen, setSidebarOpen }) => {
-  const { role, setRole } = useApp();
+  const { role, setRole, theme, toggleTheme } = useApp();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { theme, toggleTheme } = useApp();
 
   return (
-    <header className="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center p-4 transition-colors duration-300">
-      <button
-        className="text-xl p-2 font-bold lg:hidden text-slate-600 dark:text-slate-300"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-      >
-        ☰
-      </button>
-
-      <h1 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white">Dashboard</h1>
-
-      <div className="flex items-center gap-[9.5px] md:gap-3">
-        {/* Dark Mode Button */}
+    <header className="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center p-4 sticky top-0 z-40 transition-colors duration-300">
+      
+      {/* Left Section: Menu + Title */}
+      <div className="flex items-center gap-3">
         <button
-          onClick={toggleTheme}
-          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:ring-2 hover:ring-indigo-500/20 transition-all"
+          className="lg:hidden p-2 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 active:scale-95 transition-transform"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
         >
+          <span className="text-xl">☰</span>
+        </button>
+        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+          FinFlow<span className="text-indigo-600">.</span>
+        </h1>
+      </div>
+
+      {/* Right Section: Actions + Profile */}
+      <div className="flex items-center gap-2 md:gap-4">
+        
+        {/* Dark Mode Toggle */}
+        <button onClick={toggleTheme} className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
           {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
         </button>
 
-        {/* Notification Button */}
-        <button className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer rounded-full transition-colors">
+        {/* Bell Icon */}
+        <button className="p-2.5 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all relative">
           <Bell size={20} />
+          <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-rose-500 border-2 border-white dark:border-slate-900 rounded-full" />
         </button>
 
-        {/* 🛡️ Role & Profile Dropdown */}
+        {/* Profile Section */}
         <div className="relative">
-          <div
+          <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center gap-2 cursor-pointer group p-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-2xl transition-all"
+            className={`flex items-center gap-2.5 p-1 rounded-2xl transition-all border ${
+              isDropdownOpen ? "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700" : "bg-transparent border-transparent"
+            }`}
           >
-            <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center text-white font-medium border-2 border-white dark:border-slate-700 shadow-sm group-hover:scale-105 transition-transform relative shrink-0">
+            {/* Avatar */}
+            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white text-sm font-black shadow-lg relative shrink-0">
               JD
-              <div
-                className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white dark:border-slate-800 ${
-                  role === "admin" ? "bg-emerald-500" : "bg-amber-500"
-                }`}
-              />
+              <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-white dark:border-slate-800 ${role === "admin" ? "bg-emerald-500" : "bg-amber-500"}`} />
             </div>
 
-            <div className="hidden sm:flex flex-col items-start -space-y-0.5">
-              <span className="text-sm font-bold text-slate-800 dark:text-slate-100 leading-tight">
-                John Doe
-              </span>
-              <span className="text-[10px] font-black uppercase tracking-tighter text-slate-400 dark:text-slate-500">
+            {/* Name & Role (Desktop only for space management) */}
+            <div className="hidden md:flex flex-col items-start leading-none pr-1">
+              <span className="text-sm font-black text-slate-900 dark:text-slate-100">John Doe</span>
+              <span className={`text-[10px] font-black uppercase tracking-widest mt-1 ${role === 'admin' ? 'text-emerald-600' : 'text-amber-600'}`}>
                 {role} Mode
               </span>
             </div>
 
-            <ChevronDown
-              size={14}
-              className={`text-slate-400 transition-transform duration-200 ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
-            />
-          </div>
+            {/*  Up-Down Arrow Animation */}
+            <motion.div
+              animate={{ y: [0, 5, 0] }} 
+              transition={{ 
+                duration: 1.5, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="px-1"
+            >
+              <ChevronDown size={16} className="text-indigo-600 dark:text-indigo-400" strokeWidth={3} />
+            </motion.div>
+          </button>
 
           {/* Dropdown Menu */}
-          {isDropdownOpen && (
-            <>
-              <div
-                className="fixed inset-0 z-10"
-                onClick={() => setIsDropdownOpen(false)}
-              />
-              <div className="absolute right-0 mt-3 w-44 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl shadow-xl z-20 py-2 overflow-hidden animate-in fade-in zoom-in duration-150">
-                <p className="px-4 py-2 text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-50 dark:border-slate-700 mb-1">
-                  Access Control
-                </p>
-
-                <button
-                  onClick={() => {
-                    setRole("admin");
-                    setIsDropdownOpen(false);
-                  }}
-                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold transition-colors ${
-                    role === "admin"
-                      ? "bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
-                  }`}
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <>
+                <div className="fixed inset-0 z-10" onClick={() => setIsDropdownOpen(false)} />
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className="absolute right-0 mt-3 w-52 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-[20px] shadow-2xl z-20 py-2 overflow-hidden origin-top-right"
                 >
-                  <ShieldCheck size={16} /> Admin
-                </button>
+                  <div className="px-4 py-2 border-b border-slate-50 dark:border-slate-700 mb-1">
+                    <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Access Control</p>
+                  </div>
 
-                <button
-                  onClick={() => {
-                    setRole("viewer");
-                    setIsDropdownOpen(false);
-                  }}
-                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold transition-colors ${
-                    role === "viewer"
-                      ? "bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400"
-                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
-                  }`}
-                >
-                  <User size={16} /> Viewer
-                </button>
-              </div>
-            </>
-          )}
+                  <div className="px-2 space-y-1">
+                    <button
+                      onClick={() => { setRole("admin"); setIsDropdownOpen(false); }}
+                      className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-xs font-bold transition-colors ${role === "admin" ? "bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-400" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"}`}
+                    >
+                      <span className="flex items-center gap-2"><ShieldCheck size={18} strokeWidth={2.5} /> Admin</span>
+                      {role === "admin" && <CheckCircle2 size={16} />}
+                    </button>
+
+                    <button
+                      onClick={() => { setRole("viewer"); setIsDropdownOpen(false); }}
+                      className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-xs font-bold transition-colors ${role === "viewer" ? "bg-amber-50 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"}`}
+                    >
+                      <span className="flex items-center gap-2"><User size={18} strokeWidth={2.5} /> Viewer</span>
+                      {role === "viewer" && <CheckCircle2 size={16} />}
+                    </button>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </header>

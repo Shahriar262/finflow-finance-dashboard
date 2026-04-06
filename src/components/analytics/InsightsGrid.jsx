@@ -8,8 +8,7 @@ const InsightsGrid = () => {
       value: "Rent & Bills",
       desc: "Accounts for 52% of your total outflow this month.",
       icon: <AlertCircle size={20} />,
-      // Dark primary card for contrast
-      theme: "bg-slate-900 dark:bg-indigo-600 text-white",
+       theme: "bg-slate-900 dark:bg-indigo-600 text-white",
       subText: "text-slate-400 dark:text-indigo-100/70"
     },
     {
@@ -17,7 +16,6 @@ const InsightsGrid = () => {
       value: "$240.00",
       desc: "By reducing 'Shopping' by 15%, you can reach this goal.",
       icon: <Sparkles size={20} className="text-emerald-500 dark:text-emerald-300" />,
-      // Glassmorphism style for light/dark
       theme: "bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm text-slate-900 dark:text-white",
       subText: "text-slate-500 dark:text-slate-400"
     },
@@ -38,7 +36,7 @@ const InsightsGrid = () => {
           key={index} 
           className={`${item.theme} p-6 rounded-[28px] transition-all hover:-translate-y-1 hover:shadow-md duration-300 group relative overflow-hidden`}
         >
-          {/* Subtle background glow for dark mode */}
+         
           <div className="absolute -right-4 -top-4 w-16 h-16 bg-current opacity-[0.03] rounded-full" />
           
           <div className="mb-4 opacity-90 group-hover:scale-110 transition-transform duration-300">

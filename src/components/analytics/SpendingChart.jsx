@@ -9,7 +9,7 @@ const chartData = [
   { name: "Travel", value: 150 },
 ];
 
-// Slightly more vibrant colors for better contrast in both modes
+
 const COLORS = ["#4F46E5", "#10B981", "#F59E0B", "#F43F5E"];
 
 const SpendingChart = () => {
@@ -23,14 +23,13 @@ const SpendingChart = () => {
           <PieChart>
             <Pie
               data={chartData}
-              innerRadius="65%" // Slightly thinner for a more modern "Donut" look
+              innerRadius="65%" 
               outerRadius="85%"
               paddingAngle={8}
               dataKey="value"
               stroke="none"
               cx="50%"
               cy="50%"
-              // Add a subtle entrance animation
               animationBegin={0}
               animationDuration={1200}
             >
@@ -78,7 +77,7 @@ const SpendingChart = () => {
           </PieChart>
         </ResponsiveContainer>
         
-        {/* Optional: Central Text for Total - Dribbble Style */}
+        {/* Central Text for Total */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none mt-[-15px]">
           <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Total</p>
           <p className="text-2xl font-black text-slate-900 dark:text-white">$2,150</p>

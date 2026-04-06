@@ -32,7 +32,7 @@ const Dashboard = () => {
   }, [transactions]);
 
   return (
-    // 'text-slate-900 dark:text-white' এবং 'transition-colors' যোগ করা হয়েছে
+    
     <div className="space-y-6 md:space-y-8 max-w-7xl mx-auto p-4 md:p-6 lg:p-0 pb-10 text-slate-900 dark:text-white transition-colors duration-300">
       
       <DashboardHeader />

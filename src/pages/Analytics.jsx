@@ -29,12 +29,12 @@ const Analytics = () => {
       )}
 
       {/* 2. Header Section */}
-      <div className="flex flex-col gap-2 border-b border-slate-100 dark:border-slate-800 pb-6">
+      <div className="flex flex-col gap-2 -mt-0 md:-mt-3 border-b border-slate-100 dark:border-slate-800 pb-6">
         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 mb-1">
           <BarChart3 size={20} />
           <span className="text-[10px] font-black uppercase tracking-[0.2em]">Financial Intelligence</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
           Analytics Overview
         </h2>
       </div>
@@ -69,7 +69,7 @@ const Analytics = () => {
         {/* Right Column: Savings & Goal Cards */}
         <div className="lg:col-span-1 space-y-8 flex flex-col">
           
-          {/* Net Savings Performance Card - Professional Indigo Gradient for Dark Mode */}
+          {/* Net Savings Performance Card */}
           <div className="bg-indigo-600 dark:bg-gradient-to-br dark:from-indigo-700 dark:to-slate-900 p-8 rounded-[40px] text-white shadow-2xl shadow-indigo-100 dark:shadow-none relative overflow-hidden flex-1 flex flex-col justify-between group transition-all">
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
             

@@ -3,7 +3,7 @@ import { useApp } from "../../context/AppContext";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const BalanceTrendChart = () => {
-  const { transactions, theme } = useApp(); // theme ব্যবহার করা হয়েছে চার্টের কালার কন্ট্রোল করতে
+  const { transactions, theme } = useApp(); 
 
   const chartData = useMemo(() => {
     const sortedData = [...transactions].sort(
@@ -49,7 +49,7 @@ const BalanceTrendChart = () => {
       
       <ResponsiveContainer width="100%" height="80%">
         <AreaChart data={chartData}> 
-          {/* Grid line color adjusted for dark mode */}
+          
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={theme === 'dark' ? '#1e293b' : '#f1f5f9'} />
           
           <XAxis 
