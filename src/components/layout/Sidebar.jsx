@@ -8,7 +8,7 @@ import {
   X,
 } from "lucide-react";
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Sidebar = ({ setSidebarOpen }) => {
   const menuItems = [
@@ -30,9 +30,9 @@ const Sidebar = ({ setSidebarOpen }) => {
           <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100 dark:shadow-none">
             <Wallet size={20} strokeWidth={2.5} />
           </div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+          <Link to="/" className="text-xl font-bold text-slate-900 dark:text-white">
             Fin<span className="text-indigo-600">Flow</span>
-          </h2>
+          </Link>
         </div>
 
         <button
